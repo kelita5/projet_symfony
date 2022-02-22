@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+{% block title %}Article{% endblock %}
+{% block body %}
+<nav class="navbar" style="background-color: #F8DFE6">
+  <div class="container-fluid d-flex justify-content-evenly">
+    <span class="mb-0 h1 fs-1" style="font-size: 50px; color: #ff0099;">BELLACARA</span>
+    <a class="" href="/article/create"><button type="submit" class="btn" style="background-color: #FF7AA2">Créer</button></a>
+  </div>
+</nav>
+        <div class="text-center" style="background-color: #F8DFE6">
+            <img src="{{ asset('uploads/brochures/' ~ article.brochureFilename) }}"  class="card-img-logo" alt="...">
+                <h5>{{article.title}}</h5>
+                <p>{{article.content}}</p>
+                    <a href="/article/read-all" class="btn btn-primary" style="background-color: #A288E3; color: #000000;">Back</a>
+        </div>
+        <div>
+        {{ form_start(form) }}
+        {{ form_row(form.author) }}
+        {{ form_row(form.content) }}
+        <button type="submit" class="btn" style="background-color: #A288E3">Commenter</button>
+    {{ form_end(form) }}
+        </div>
+{% endblock %}

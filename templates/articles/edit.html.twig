@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+{% block title %}Modifier l'article{% endblock %}
+{% block body %}
+<nav class="navbar" style="background-color: #F8DFE6">
+  <div class="container-fluid d-flex justify-content-evenly">
+    <span class="mb-0 h1 fs-1" style="font-size: 50px; color: #ff0099;">BELLACARA</span>
+    <a class="" href="/article/create"><button type="submit" class="btn" style="background-color: #FF7AA2">Créer</button></a>
+  </div>
+</nav>
+    <div style="background-color: #F8DFE6; height: 100em;">
+    {{ form_start(form, {"attr": {"novalidate":"novalidate"}}) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.content) }}
+        {{ form_row(form.brochureFilename) }}
+        <a href="/article/read-all"><button type="submit" class="btn btn-primary" style="background-color: #CFAEE7; color: #000000;"  >Modifier</button></a>
+    {{ form_end(form)}}
+    </div>
+{% endblock %}
+
+

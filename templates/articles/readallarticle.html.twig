@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+{% block title %}HOME{% endblock %}
+{% block body %}
+<nav class="navbar" style="background-color: #F8DFE6">
+  <div class="container-fluid d-flex justify-content-evenly">
+    <span class="mb-0 h1 fs-1" style="font-size: 50px; color: #ff0099;">BELLACARA</span>
+    <a class="" href="/article/create"><button type="submit" class="btn" style="background-color: #FF7AA2">Créer</button></a>
+  </div>
+</nav>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/Images/image1.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/Images/image2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/Images/image3.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="d-flex flex-wrap justify-content-evenly" style="padding: 60px; background-color: #F8DFE6">
+{% for article in articles %}
+        <div class="card col-6" style="width: 20rem;">
+           <img src="{{ asset('uploads/brochures/' ~ article.brochureFilename) }}"  class="card-img-logo" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{article.title}}</h5>
+                <p class="card-text">{{article.content}}</p>
+                <div class="d-flex f-row justify-content-evenly">
+                    <a href="/article/read/{{article.id}}" class="btn" style="background-color: #A288E3">Lire plus</a>
+                    <a href="/article/edit/{{article.id}}" class="btn" style="background-color: #CFAEE7">Modifier</a>
+                    <a href="/article/delete/{{article.id}}" class="btn" style="background-color: #ff0099">Supprimer</a>
+                </div>
+                
+            </div>
+            <footer class="footer mx-3">Le {{article.createdAt|date("d/m/Y")}}</footer>
+        </div>
+{% endfor %}
+</div>
+{% endblock %}
